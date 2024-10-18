@@ -1,0 +1,198 @@
+  <mat-sidenav-container autosize fullscreen >
+
+  <mat-sidenav #sidenav>
+
+    <mat-nav-list (click)="sidenav.close()" >
+
+      <a mat-list-item class="bg-hover">
+            <mat-icon class="text-white">home</mat-icon>
+            <span class="text-white">Início</span>
+      </a>
+      
+      <a mat-list-item class="bg-hover">
+          <mat-icon class="text-white">tv</mat-icon>
+          <span class="text-white">Séries</span> 
+      </a>
+      
+      <a mat-list-item class="bg-hover">
+          <mat-icon class="text-white">movie_filter</mat-icon>
+          <span class="text-white">Filmes</span>
+      </a>
+      
+      <a mat-list-item class="bg-hover">
+          <mat-icon class="text-white">whatshot</mat-icon>
+          <span class="text-white">Bombando</span> 
+      </a>
+      
+      <a mat-list-item class="bg-hover">
+          <mat-icon class="text-white">list</mat-icon>
+          <span class="text-white">Minha lista</span>   
+      </a>
+      
+      <a mat-list-item class="bg-hover">
+          <mat-icon class="text-white">chrome_reader_mode</mat-icon>
+          <span class="text-white">Navegar por idiomas</span>
+      </a>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+  <mat-toolbar [ngStyle]="this.navbg">
+
+    <button mat-icon-button (click)="sidenav.open()" >
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <div fxLayoutAlign="start center" fxHide.lt-md class="menu-left">
+      <a mat-button>
+        <img fxLayoutAlign="center" width="100px" src="../assets/img/Netflix.png" >
+        </a>
+
+        <a mat-button routerLink="">
+            Início
+        </a>
+
+        <a mat-button>
+            Séries
+        </a>
+
+        <a mat-button>
+            Filmes
+        </a>
+
+        <a mat-button>
+            Bombando
+        </a>
+
+        <a mat-button>
+            Minha lista
+        </a>
+
+        <a mat-button>
+            Navegar por idiomas
+        </a>
+
+    </div>
+
+    <div fxFlex="100%"></div>
+
+    <div class="containerSearch" fxLayoutAlign="center" >
+              
+      <div fxLayoutAlign="end" class="search-box" fxHide.lt-sm>
+  
+        <input class="search-txt" matInput placeholder="">
+  
+        <a fxLayoutAlign=" center end">
+          <mat-icon class="searchIcon" appSearch>search</mat-icon>
+        </a>
+        
+      </div>
+    </div>
+
+    <div fxLayoutAlign=" center">
+
+      <div fxHide.lt-sm class="menu-right-nav-itens menu-right-text">
+        <button fxLayoutAlign="center" mat-button >
+           Infantil
+        </button>
+      </div>
+    
+      <div  fxHide.lt-sm class="menu-right-nav-itens">
+        <a fxLayoutAlign="center" class="menu-right-text" [mat-menu-trigger-for]="schedule">
+          <mat-icon>schedule</mat-icon>
+        </a>
+      </div>
+    
+      <mat-menu #schedule class="bg-dark">
+
+        <h2 class="mx-2 text-white bg-title">ÚLTIMOS ADICIONADOS:</h2>
+
+        <div class="container text-white" *ngFor="let movie of lastMoviesAdded.slice(0,5)">
+            <h3 class="bg-title">{{movie.title | uppercase}}</h3>
+
+            <img width="25%" src="{{movie.movieCover}}" alt="">
+
+            <p>{{movie.synopsis}}</p>
+            <button mat-raised-button color="primary" class="mb-5" (click)="watchMovie(movie)">Assistir</button>
+          
+        </div>
+        
+      </mat-menu>
+    
+      <div class="menu-right-nav-itens">
+        <a mat-button [mat-menu-trigger-for]="dropdown">
+          <img fxLayoutAlign="center" class="smile" src="http://occ-0-1311-1740.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABY20DrC9-11ewwAs6nfEgb1vrORxRPP9IGmlW1WtKuaLIz8VxCx5NryzDK3_ez064IsBGdXjVUT59G5IRuFdqZlCJCneepU.png?r=229" >
+        </a>
+      </div>
+    
+      <mat-menu #dropdown class="bg-dark">
+        
+        <button mat-menu-item routerLink="/" class="bg-hover">
+    
+            <mat-icon class="text-white">account_circle</mat-icon>
+            <span class="text-white">David</span>
+    
+        </button>
+    
+        <button mat-menu-item routerLink="/about" class="bg-hover">
+    
+            <mat-icon class="text-white">child_care</mat-icon>
+            <span class="text-white">Infantil</span>
+    
+        </button>
+    
+        <button mat-menu-item routerLink="/about" class="bg-hover">
+    
+            <mat-icon class="text-white">person_add</mat-icon>
+            <span class="text-white">Gerenciar perfis</span>
+    
+        </button>
+    
+        <button mat-menu-item routerLink="/about" class="bg-hover">
+    
+            <mat-icon class="text-white">people_outline</mat-icon>
+            <span class="text-white">Transferir perfil</span>
+    
+        </button>
+    
+        <button mat-menu-item routerLink="/about" class="bg-hover">
+    
+            <mat-icon class="text-white">account_box</mat-icon>
+            <span class="text-white">Conta</span>
+      
+        </button>
+    
+        <button mat-menu-item routerLink="/about" class="bg-hover">
+    
+            <mat-icon class="text-white">help</mat-icon>
+            <span class="text-white">Central de ajuda</span>
+      
+        </button>
+    
+        <hr>
+
+        <button mat-menu-item routerLink="/about" class="bg-hover">
+    
+            <mat-icon class="text-white">backspace</mat-icon>
+            <span class="text-white">Sair da Netflix</span>
+    
+        </button>
+    
+    </mat-menu>
+    </div>
+
+  </mat-toolbar>
+  
+   <app-banner-carousel [banners]="banners"></app-banner-carousel>
+  
+  <app-carousel [movies]="moviesAction"></app-carousel>
+  <app-carousel [movies]="moviesComedy"></app-carousel>
+  
+  <app-footer></app-footer>
+
+</mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,0 +1,36 @@
+<div class="details-container">
+
+    <mat-grid-list cols="2" >
+   
+       <h1 mat-dialog-title>
+            <span>{{movie.title | uppercase}}</span>
+       </h1>
+   
+       <mat-grid-tile>
+   
+           <div mat-dialog-content>
+   
+               <p>
+                   {{movie.synopsis}}
+               </p>
+   
+               
+            </div>
+            
+            <mat-grid-tile-footer>
+                <div  mat-dialog-actions class="m-2">
+                    <button mat-raised-button color="primary" (click)="watchMovie()">Assistir</button>
+                    <button mat-raised-button color="warn" (click)="backMovies()">Voltar</button>
+                </div> 
+            </mat-grid-tile-footer>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+            <img width="65%" src="{{movie.movieCover}}" alt="">
+        </mat-grid-tile>
+        
+    </mat-grid-list>
+
+
+
+</div>   
